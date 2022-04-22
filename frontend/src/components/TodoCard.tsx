@@ -1,6 +1,7 @@
 import {Todo} from "../model/Todo";
-import axios from "axios";
 import "./TodoCard.css";
+import AdvanceButton from "./AdvanceButton";
+import useTodos from "../hooks/useTodos";
 
 
 type TodoCardProps = {
@@ -8,25 +9,15 @@ type TodoCardProps = {
 }
 
 export default function TodoCard({todo}: TodoCardProps) {
-
-    const onClickAdvance = () => {
-        let target = "";
-        if (todo.status === "OPEN") {
-            target="IN PROGRESS";
-        } else if (todo.status === "IN PROGRESS") {
-            target="DONE";
-        } else if (todo.status === "") {
-            target="OPEN";
-        }
-        axios.put("/api/todo/"+todo.id, {id: todo.id, description: todo.description, status: target})
-    }
-
+    
+    const {todos, addTodo} = useTodos()
+    
     return (
     <div>
         <div className={"TDCard"}>
-            <div className={"ToDoDescription"}><h3>{todo.description}</h3></div>
+            <div className={"ToDoDescription"}><h4>{todo.description}</h4></div>
             <div className={"ToDoStatus"}><b>Status: </b>{todo.status}</div>
-            <button onClick={onClickAdvance}>Advance</button>
+            <AdvanceButton todo={todo} addTodo={addTodo}/>
         </div>
     </div>
     )
