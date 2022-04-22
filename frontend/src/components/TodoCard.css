@@ -1,0 +1,11 @@
+.TDCard {
+    border-style: double;
+    border-color: burlywood;
+    padding: 5px;
+    text-align: center;
+    background-color: white;
+}
+
+.TDCard:hover {
+    border-color: hotpink;
+}

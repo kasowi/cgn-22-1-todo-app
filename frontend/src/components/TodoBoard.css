@@ -1,0 +1,7 @@
+.TodoItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-around;
+    flex-grow: 1;
+}
